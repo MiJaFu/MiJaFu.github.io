@@ -31,76 +31,8 @@
   <div id="container">
     <div id="wrap">
       <header id="header">
-  <!-- <div id="banner"></div> -->
-  <div class="box">
-    <ul>
-        <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </li>
-        <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </li>
-        <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </li>
-        <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </li>
-        <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </li>
-    </ul>
-    <a class="prev fa fa-chevron-left" href="javascript:;"></a>
-    <a class="next fa fa-chevron-right" href="javascript:;"></a>
-</div>
-<script>
-    var prev = document.querySelector('.prev');
-    var next = document.querySelector('.next');
-    var aLi = document.querySelectorAll("li");
-    var lastLi = document.querySelector("li:last-child");//找到最后一个li
-    var num = 0; //定义次数的初始化值
-    var isTransitionEnd = true;
-    lastLi.addEventListener("webkitTransitionEnd", function () {
-        // console.log("最后一个li过渡完成了");
-        isTransitionEnd = true;
-    })
+  <div id="banner"></div>
 
-    prev.onclick = function () {
-        if(isTransitionEnd==false){
-            return;
-        }
-        num++;
-        isTransitionEnd = false;
-        for(var i = 0;i<aLi.length;i++) {
-            aLi[i].style.transform = 'rotateX('+90*num+'deg)';
-        }
-    }
-    next.onclick = function () {
-        if(isTransitionEnd==false){
-            return;
-        }
-        num++;
-        isTransitionEnd = false;
-        for(var i = 0;i<aLi.length;i++) {
-            aLi[i].style.transform = 'rotateX('+-90*num+'deg)';
-        }
-    }
-</script>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
