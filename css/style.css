@@ -1,5 +1,6 @@
 body {
   width: 100%;
+  background-image: url('images/blog-backgroundImg.jpg');
 }
 body:before,
 body:after {
