@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>切割轮播图</title>
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width:100%;
+        }
+        .box{
+            position: relative;
+            margin:100px auto;
+            width: 560px;
+            height: 300px;
+            box-shadow: 0px 0px 1px #000;
+
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding:0;
+            font-size: 0;
+            width: 100%;
+            height: 100%;
+        }
+        li {
+            width: 112px;
+            height: 100%;
+            display: inline-block;
+            position: relative;
+            font-size: 0;
+            transform-style: preserve-3d;
+            transition: all 1s;
+        }
+        .box ul span {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+        }
+        .box ul span:nth-child(1) {
+            background-image: url("images/1.jpg");
+            transform:translateZ(150px);
+        }
+
+        .box ul span:nth-child(2) {
+            background-image: url("images/2.jpg");
+            transform: rotateX(90deg) translateZ(150px);
+        }
+
+        .box ul span:nth-child(3) {
+            background-image: url("images/3.jpg");
+            transform: rotateX(180deg) translateZ(150px);
+        }
+
+        .box ul span:nth-child(4) {
+            background-image: url("images/4.jpg");
+            transform: rotateX(-90deg) translateZ(150px);
+        }
+        .box li:nth-child(2) span{
+            background-position: -112px;
+        }
+        .box li:nth-child(3) span{
+            background-position: -224px;
+        }
+        .box li:nth-child(4) span{
+            background-position: -336px;
+        }
+        .box li:nth-child(5) span{
+            background-position: -448px;
+        }
+        li:nth-child(1) {
+            transition-delay: 0s;
+        }
+        li:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        li:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        li:nth-child(4) {
+            transition-delay: 0.6s;
+        }
+        li:nth-child(5) {
+            transition-delay: 0.8s;
+        }
+        a.prev,a.next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #fff;
+            text-decoration: none;
+            /* background-color: rgba(255,255,255,0.2); */
+            opacity: 0;
+            transition: all 1s;
+        }
+        a.prev {
+            left: 0px;
+            padding-left: 10px;
+        }
+
+        a.next {
+            right: 0px;
+            padding-right: 10px;
+        }
+        .box:hover a {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+    </ul>
+    <a class="prev fa fa-chevron-left" href="javascript:;"></a>
+    <a class="next fa fa-chevron-right" href="javascript:;"></a>
+</div>
+<script>
+    var prev = document.querySelector('.prev');
+    var next = document.querySelector('.next');
+    var aLi = document.querySelectorAll("li");
+    var lastLi = document.querySelector("li:last-child");//找到最后一个li
+    var num = 0; //定义次数的初始化值
+    var isTransitionEnd = true;
+    lastLi.addEventListener("webkitTransitionEnd", function () {
+        // console.log("最后一个li过渡完成了");
+        isTransitionEnd = true;
+    })
+
+    prev.onclick = function () {
+        if(isTransitionEnd==false){
+            return;
+        }
+        num++;
+        isTransitionEnd = false;
+        for(var i = 0;i<aLi.length;i++) {
+            aLi[i].style.transform = 'rotateX('+90*num+'deg)';
+        }
+    }
+    next.onclick = function () {
+        if(isTransitionEnd==false){
+            return;
+        }
+        num++;
+        isTransitionEnd = false;
+        for(var i = 0;i<aLi.length;i++) {
+            aLi[i].style.transform = 'rotateX('+-90*num+'deg)';
+        }
+    }
+</script>
+</body>
+</html>
