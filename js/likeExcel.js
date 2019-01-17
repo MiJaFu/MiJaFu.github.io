@@ -42,7 +42,7 @@
                 el.bootstrapTable({
                     sidePagination: 'client',
                     columns: option.columns,
-                    cardView: isMobile(),
+                    cardView: false,
                     data: option.data
                 });
                 return;
