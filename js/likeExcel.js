@@ -457,7 +457,7 @@
             }
         }
         var focusText = nextEle.html();
-        var tdWidth = $(nextEle).width();
+        var tdWidth = $(nextEle).width()+2;
         var ExcelText = that.getfocusInput(focusText, tdWidth);
         nextEle.addClass("tdselect").html(ExcelText);
         nextEle.children(".likeExcelText").trigger("focus");
