@@ -90,7 +90,7 @@
         el.bootstrapTable({
             sidePagination: 'client',
             columns: option.columns,
-            cardView: isMobile(),
+            cardView: false,
             data: option.data
         });
     };
@@ -152,7 +152,7 @@
                 $("#autocompleteTable").bootstrapTable({
                     sidePagination: 'client',
                     columns: option.autocompleteColumns,
-                    cardView: isMobile(),
+                    cardView: false,
                     data: []
                 });
                 option.columns[index].source(str, that.setResult);
